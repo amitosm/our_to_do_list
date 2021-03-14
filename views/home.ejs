@@ -16,10 +16,15 @@
         }
 
         function checkIfDelete(id) {
-            var check = window.confirm('Are you sure you want to delete the task?');
-            if (check) {
-                window.location.href = '../delete/' + id;
+            if ('<%=data.length%>' > 0) {
+                var check = window.confirm('Are you sure you want to delete the task?');
+                if (check) {
+                    window.location.href = '../delete/' + id;
+                }
+            } else {
+                alert('Add more tasks to the list in order to delete this task');
             }
+
         }
     </script>
     <style>
@@ -125,8 +130,6 @@
             <div class="card-body">
                 <h5 class="card-title">Task Description</h5>
                 <p id="taskDescription" class="card-text">The chosen task's description will be written here.
-                    <br>
-                    You can update, delete and add new tasks.
                 </p>
             </div>
         </div>
