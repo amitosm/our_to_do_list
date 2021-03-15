@@ -22,7 +22,7 @@ let id_count = 0;
 
 
 //listen on port 3000
-app.listen(port, () => console.log(`listning on port ${port}`))
+app.listen(process.env.PORT || port);
 
 app.get('/', function (req, res) {
 
@@ -54,11 +54,18 @@ app.post('/add', function (req, res) {
 app.get('/update/:id', function (req, res) {
   let id_to_update = parseInt(req.params.id);
   // render to update.ejs
+  let taskToUpdate = 0;
+  data.forEach(x => {
+    if (x.id == id_to_update) {
+      taskToUpdate = x;
+    };
+  });
+
   res.render('update', {
     title: 'Edit Task',
     id: id_to_update,
-    task: data[id_to_update].task,
-    description: data[id_to_update].description
+    task: taskToUpdate.task,
+    description: taskToUpdate.description
   })
 })
 
@@ -68,7 +75,12 @@ app.post('/update/:id', function (req, res) {
   let task = req.body.task;
   let description = req.body.description;
 
-  data[id] = { id: id, task: task, description: description }
+  for (let i = 0; i < data.length; ++i) {
+    if (data[i].id == id) {
+      data[i] = { id: id, task: task, description: description };
+      break;
+    }
+  }
 
   res.redirect('/');
 })
@@ -76,10 +88,17 @@ app.post('/update/:id', function (req, res) {
 app.get('/delete/(:id)', function (req, res) {
 
   let id = req.params.id;
-  data.splice(id, 1);
-  if (id_count > 0) {
-    --id_count;
+  if (data.length == 1) {
+    data.splice(0, 1);
+  } else {
+    if (data.length > 0) {
+      data.splice(id, 1);
+      if (id_count > 0) {
+        --id_count;
+      }
+    }
   }
+
   res.redirect('/');
 })
 
