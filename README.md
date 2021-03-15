@@ -1,8 +1,9 @@
 
 # Welcome to our To Do List Manager
 #### In this app you can manage your tasks easily and become more productive.
-#### NOTE! When you leave the site all information is permanently deleted.
+
 To enter the site, please visit this link: 
+https://to-do-list-ne.herokuapp.com/
 
 <br>
 <br>
