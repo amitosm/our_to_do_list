@@ -2,19 +2,22 @@
 const express = require('express')
 const app = express()
 const port = 3000
-// const router =express.Router()
-var path = require('path');
+const path = require('path');
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 // template set
 app.set('views', './views')
 app.set('view engine', 'ejs')
 
-
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+//static files
+//we failed to make external JS file for home page.
+app.use('/css', express.static(path.join(__dirname, "/public/css")));
 
 //array of jsons will be our database
-let data = [{ "id": 0, "task": "Add tasks to the list", "description": "Add tasks to the list by pressing the add task button" }]
+//every restart of the server will delete all data.
+//the id count will keep track of the id 
+let data = []
 let id_count = 0;
 
 
@@ -37,12 +40,13 @@ app.get('/add', function (req, res) {
 })
 
 app.post('/add', function (req, res) {
+  //when adding a new task this function will handle the data 
+  // and will render the home page with updated data.
   let task = req.body.task;
   let description = req.body.description;
   let id = id_count
   id_count += 1
   data.push({ id: id, task: task, description: description })
-  console.log(data);
   res.redirect('/');
 
 })
@@ -51,7 +55,7 @@ app.get('/update/:id', function (req, res) {
   let id_to_update = parseInt(req.params.id);
   // render to update.ejs
   res.render('update', {
-    title: 'Edit Book',
+    title: 'Edit Task',
     id: id_to_update,
     task: data[id_to_update].task,
     description: data[id_to_update].description
@@ -73,7 +77,6 @@ app.get('/delete/(:id)', function (req, res) {
 
   let id = req.params.id;
   data.splice(id, 1);
-
   if (id_count > 0) {
     --id_count;
   }

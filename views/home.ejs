@@ -6,13 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>My to do list</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+
     <script>
         function showDescription(description, el) {
             document.getElementById('taskDescription').innerText = description;
-        }
-
-        function updateTask(id) {
-            alert(id);
         }
 
         function checkIfDelete(id) {
@@ -21,78 +19,9 @@
                 if (check) {
                     window.location.href = '../delete/' + id;
                 }
-            } else {
-                alert('Add more tasks to the list in order to delete this task');
             }
-
         }
     </script>
-    <style>
-        .list-group-item:hover {
-            background-color: blue;
-            color: white;
-        }
-
-        .title {
-            margin-top: 2vh;
-            margin-bottom: 2vh;
-            font-size: 20px;
-            text-align: center;
-        }
-
-        .flexContainer {
-            display: flex;
-            flex-direction: row;
-            height: 85vh;
-        }
-
-        .taskListFlexContainer {
-            margin-left: 1vw;
-            display: flex;
-            flex-direction: column;
-            height: 85vh;
-        }
-
-        .taskListContainer {
-            height: 85vh;
-            width: 30vw;
-            overflow: auto;
-        }
-
-        .list-group {
-            text-align: center;
-            word-wrap: break-word;
-        }
-
-        .taskListButtons {
-            margin-top: 2vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .addBtn {
-            margin: 0px 0px -1px;
-            padding: 12px 20px;
-        }
-
-        .editBtn {
-            margin: 0px 0px -1px;
-            padding: 12px 20px;
-            height: 9vh;
-        }
-
-        .deleteBtn {
-            margin: 0px 0px -1px;
-            padding: 12px 20px;
-            height: 9vh;
-        }
-
-        .taskbutton {
-            display: flex;
-            flex-direction: row;
-            margin-bottom: 1vh;
-        }
-    </style>
 </head>
 
 <body class="" style="overflow: hidden">
@@ -113,7 +42,7 @@
                                 <a class="btn btn-outline-success editBtn" href="/update/<%=task.id%>">
                                     Edit
                                 </a>
-                                <a class="btn btn-outline-danger deleteBtn" style="color: #dc3545"
+                                <a class="btn btn-outline-danger deleteBtn"
                                     onclick="checkIfDelete('<%=task.id%>')">
                                     Delete
                                 </a>
@@ -129,7 +58,10 @@
         <div class="card" style="height: 85vh; width: 55vw; margin-left: 3vw;">
             <div class="card-body">
                 <h5 class="card-title">Task Description</h5>
-                <p id="taskDescription" class="card-text">The chosen task's description will be written here.
+                <p id="taskDescription" class="card-text">
+                    The chosen task's description will be written here.
+                    <br>
+                    In order to add new task, press on the "Add Task" button.
                 </p>
             </div>
         </div>

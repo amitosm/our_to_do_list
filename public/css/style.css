@@ -1,0 +1,76 @@
+.list-group-item:hover {
+    background-color: rgba(123, 123, 224, 0.856);
+    color: white;
+
+}
+
+.title {
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    font-size: 20px;
+    text-align: center;
+    color: rgba(28, 28, 48, 0.856);
+}
+
+.flexContainer {
+    display: flex;
+    flex-direction: row;
+    height: 85vh;
+}
+
+.taskListFlexContainer {
+    margin-left: 1vw;
+    display: flex;
+    flex-direction: column;
+    height: 85vh;
+}
+
+.taskListContainer {
+    height: 85vh;
+    width: 30vw;
+    overflow: auto;
+}
+
+.list-group {
+    text-align: center;
+    word-wrap: break-word;
+}
+
+.taskListButtons {
+    margin-top: 2vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.addBtn {
+    margin: 0px 0px -1px;
+    padding: 12px 20px;
+}
+
+.editBtn {
+    margin: 0px 0px -1px;
+    padding: 12px 20px;
+    height: 9vh;
+}
+
+.deleteBtn {
+    margin: 0px 0px -1px;
+    padding: 12px 20px;
+    height: 9vh;
+}
+
+.deleteBtn:hover {
+    /* when cursor on the delete btn */
+    margin: 0px 0px -1px;
+    padding: 12px 20px;
+    height: 9vh;
+    color: white;
+}
+
+
+
+.taskbutton {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1vh;
+}
