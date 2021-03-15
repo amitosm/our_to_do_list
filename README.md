@@ -30,6 +30,7 @@ https://to-do-list-ne.herokuapp.com/
 - We were unable to link an external script to the HTML file no matter how hard we tried.
 We solved the CSS external file problem with static files but it didn't work for the JS file.
 - Full Disclosure - our home page made from zero but for the add and update screen we took great inspiration from our lecturer's library's project due to time constrains.
+- we were unable to delete the data on close , the data remains till you delete it.
 
 Hope you enjoy our site
 <br>
